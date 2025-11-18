@@ -2,7 +2,8 @@ import axios, { AxiosInstance, AxiosResponse } from 'axios'
 import type { ApiResponse } from '@/types'
 
 // Configuração base da API
-const API_BASE_URL = 'http://localhost:8000/api/v1'
+// const API_BASE_URL = 'http://localhost:8000/api/v1'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL + '/api/v1'
 
 // Criar instância do axios
 const apiClient: AxiosInstance = axios.create({
@@ -63,7 +64,7 @@ export const apiRequest = async <T>(
     }
   } catch (error: any) {
     console.error('API Error:', error)
-    
+
     return {
       success: false,
       error: error.response?.data?.message || error.message || 'Erro desconhecido',
